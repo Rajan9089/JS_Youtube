@@ -12,17 +12,35 @@
   </body>
   <script>
     // const intervalId = setInterval(sayDate, 1000, "Hi"); // third parameter v de sakte hai optional
-    document.querySelector("#start").addEventListener("click", function () {
-      const start = function () {
-        console.log("Rushi", Date.now());
-      };
-      const toStop = setInterval(start, 1000, (click = start));
+    // document.querySelector("#start").addEventListener("click", function () {
+    //   const start = function () {
+    //     console.log("Rushi", Date.now());
+    //   };
+    //   const toStop = setInterval(start, 1000, (click = start));
 
-      document.querySelector("#stop").addEventListener("click", function () {
-        clearInterval(toStop);
-      });
-    });
-    // clearInterval(stopId);
+    //   document.querySelector("#stop").addEventListener("click", function () {
+    //     clearInterval(toStop);
+    //   });
+    // });
+
+    let intervalId ;
+    const toStart = function() {
+      const sayDate = function() {
+        console.log(Date.now());
+      }
+      if(!intervalId) {
+        intervalId = setInterval(sayDate , 1000);
+      }
+    }
+    const toStop = function() {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+
+    document.querySelector('#start').addEventListener('click' , toStart);
+    document.querySelector('#stop').addEventListener('click' , toStop);
+    
   </script>
 </html>
 
